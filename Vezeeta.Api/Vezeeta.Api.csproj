@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.25" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.25" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.25">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.25" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Vezeeta.Domain\Vezeeta.Domain.csproj" />
+    <ProjectReference Include="..\Vezeeta.Repository\Vezeeta.Repository.csproj" />
+    <ProjectReference Include="..\VezeetaServices\VezeetaServices.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Vezeeta.Domain">
+      <HintPath>..\Vezeeta.Services\bin\Debug\net6.0\Vezeeta.Domain.dll</HintPath>
+    </Reference>
+    <Reference Include="Vezeeta.Services">
+      <HintPath>..\Vezeeta.Repository\bin\Debug\net6.0\Vezeeta.Services.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

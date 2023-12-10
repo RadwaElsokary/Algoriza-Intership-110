@@ -1,0 +1,14 @@
+E:\Radwa\visualstudio.net\Projects\Vezeeta\Vezeeta.Domain\bin\Debug\net6.0\Vezeeta.Domain.deps.json
+E:\Radwa\visualstudio.net\Projects\Vezeeta\Vezeeta.Domain\bin\Debug\net6.0\Vezeeta.Domain.runtimeconfig.json
+E:\Radwa\visualstudio.net\Projects\Vezeeta\Vezeeta.Domain\bin\Debug\net6.0\Vezeeta.Domain.dll
+E:\Radwa\visualstudio.net\Projects\Vezeeta\Vezeeta.Domain\bin\Debug\net6.0\Vezeeta.Domain.pdb
+E:\Radwa\visualstudio.net\Projects\Vezeeta\Vezeeta.Domain\obj\Debug\net6.0\Vezeeta.Domain.csproj.AssemblyReference.cache
+E:\Radwa\visualstudio.net\Projects\Vezeeta\Vezeeta.Domain\obj\Debug\net6.0\Vezeeta.Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\Radwa\visualstudio.net\Projects\Vezeeta\Vezeeta.Domain\obj\Debug\net6.0\Vezeeta.Domain.AssemblyInfoInputs.cache
+E:\Radwa\visualstudio.net\Projects\Vezeeta\Vezeeta.Domain\obj\Debug\net6.0\Vezeeta.Domain.AssemblyInfo.cs
+E:\Radwa\visualstudio.net\Projects\Vezeeta\Vezeeta.Domain\obj\Debug\net6.0\Vezeeta.Domain.csproj.CoreCompileInputs.cache
+E:\Radwa\visualstudio.net\Projects\Vezeeta\Vezeeta.Domain\obj\Debug\net6.0\Vezeeta.Domain.dll
+E:\Radwa\visualstudio.net\Projects\Vezeeta\Vezeeta.Domain\obj\Debug\net6.0\refint\Vezeeta.Domain.dll
+E:\Radwa\visualstudio.net\Projects\Vezeeta\Vezeeta.Domain\obj\Debug\net6.0\Vezeeta.Domain.pdb
+E:\Radwa\visualstudio.net\Projects\Vezeeta\Vezeeta.Domain\obj\Debug\net6.0\Vezeeta.Domain.genruntimeconfig.cache
+E:\Radwa\visualstudio.net\Projects\Vezeeta\Vezeeta.Domain\obj\Debug\net6.0\ref\Vezeeta.Domain.dll

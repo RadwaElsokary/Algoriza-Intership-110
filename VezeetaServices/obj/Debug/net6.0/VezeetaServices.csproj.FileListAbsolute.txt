@@ -1,0 +1,17 @@
+E:\Radwa\visualstudio.net\Projects\Vezeeta\VezeetaServices\bin\Debug\net6.0\VezeetaServices.deps.json
+E:\Radwa\visualstudio.net\Projects\Vezeeta\VezeetaServices\bin\Debug\net6.0\VezeetaServices.dll
+E:\Radwa\visualstudio.net\Projects\Vezeeta\VezeetaServices\bin\Debug\net6.0\VezeetaServices.pdb
+E:\Radwa\visualstudio.net\Projects\Vezeeta\VezeetaServices\bin\Debug\net6.0\Vezeeta.Domain.dll
+E:\Radwa\visualstudio.net\Projects\Vezeeta\VezeetaServices\bin\Debug\net6.0\Vezeeta.Repository.dll
+E:\Radwa\visualstudio.net\Projects\Vezeeta\VezeetaServices\bin\Debug\net6.0\Vezeeta.Domain.pdb
+E:\Radwa\visualstudio.net\Projects\Vezeeta\VezeetaServices\bin\Debug\net6.0\Vezeeta.Repository.pdb
+E:\Radwa\visualstudio.net\Projects\Vezeeta\VezeetaServices\obj\Debug\net6.0\VezeetaServices.csproj.AssemblyReference.cache
+E:\Radwa\visualstudio.net\Projects\Vezeeta\VezeetaServices\obj\Debug\net6.0\VezeetaServices.GeneratedMSBuildEditorConfig.editorconfig
+E:\Radwa\visualstudio.net\Projects\Vezeeta\VezeetaServices\obj\Debug\net6.0\VezeetaServices.AssemblyInfoInputs.cache
+E:\Radwa\visualstudio.net\Projects\Vezeeta\VezeetaServices\obj\Debug\net6.0\VezeetaServices.AssemblyInfo.cs
+E:\Radwa\visualstudio.net\Projects\Vezeeta\VezeetaServices\obj\Debug\net6.0\VezeetaServices.csproj.CoreCompileInputs.cache
+E:\Radwa\visualstudio.net\Projects\Vezeeta\VezeetaServices\obj\Debug\net6.0\VezeetaServices.csproj.CopyComplete
+E:\Radwa\visualstudio.net\Projects\Vezeeta\VezeetaServices\obj\Debug\net6.0\VezeetaServices.dll
+E:\Radwa\visualstudio.net\Projects\Vezeeta\VezeetaServices\obj\Debug\net6.0\refint\VezeetaServices.dll
+E:\Radwa\visualstudio.net\Projects\Vezeeta\VezeetaServices\obj\Debug\net6.0\VezeetaServices.pdb
+E:\Radwa\visualstudio.net\Projects\Vezeeta\VezeetaServices\obj\Debug\net6.0\ref\VezeetaServices.dll
