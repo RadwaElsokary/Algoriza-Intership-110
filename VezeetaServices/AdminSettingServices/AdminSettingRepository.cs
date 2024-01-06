@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vezeeta.Domain.Models;
 using Vezeeta.Domain.ModelsDto;
+using Vezeeta.Repository;
 using Vezeeta.Repository.Repository;
 
 namespace VezeetaServices.AdminSettingServices
@@ -12,9 +14,11 @@ namespace VezeetaServices.AdminSettingServices
 	public class AdminSettingRepository : IAdminSettingRepository
 	{
 		private readonly IRepository<Discound> repository;
-		public AdminSettingRepository(IRepository<Discound> repository)
+		private readonly ApplicationDbContext context;
+		public AdminSettingRepository(IRepository<Discound> repository,ApplicationDbContext context)
 		{
 			this.repository = repository;
+			this.context = context;
 		}
 		public bool AddDiscound(DiscoundDto model)
 		{
@@ -31,12 +35,13 @@ namespace VezeetaServices.AdminSettingServices
 		}
 		public bool EditDiscoud(int id, DiscoundDto model)
 		{
+			var requestnum = context.Requests.Include(a => a.Discound).Where(a => a.DiscoundId == id).ToList();
 			var result = repository.GetId(id);
 			result.DiscoundCode = model.DiscoundCodeCoupon;
 			result.Type = model.Type;
 			result.Value = model.Value;
 			result.RequestNumber = model.RequestNumber;
-			if (result.Requests == null)
+			if (requestnum.Count() == 0)
 			{
 				repository.Update(result);
 				repository.SaveChanges();

@@ -127,5 +127,35 @@ namespace Vezeeta.Services.DoctorServices
 			return result;
 			
 		}
+		public List<Doctor> GetTopDoctors()
+		{
+			var doctors = context.Doctors.Include(d => d.Appointments).ThenInclude(a => a.Time)
+				.OrderByDescending(d => d.Appointments.SelectMany(a => a.Time.Where(t=>t.RequestId != null))
+				.Count()).Take(10).ToList();
+			return doctors;
+		}
+		public int GetNumRequestsForDoctors(string DoctorId)
+		{
+			int doctorsNum = context.Doctors.Where(a => a.Id == DoctorId).Include(d => d.Appointments)
+				.ThenInclude(a => a.Time).SelectMany(a => a.Appointments)
+				.SelectMany(t => t.Time.Where(a=>a.RequestId != null)).Count();
+			return doctorsNum;
+		}
+
+		public List<Specialization> GetTopSpecialize()
+		{
+			var specializes = context.Specializations.Include(d => d.Doctor).ThenInclude(a => a.Appointments).ThenInclude(t => t.Time)
+				.OrderByDescending(s => s.Doctor.SelectMany(a => a.Appointments)
+				.SelectMany(t => t.Time.Where(r => r.RequestId != null)).Count()).Take(5).ToList();
+			return specializes;
+		}
+		public int GetRequestsNumForSpecialize(string SpecializeId)
+		{
+			int requestsNum = context.Specializations.Where(s=>s.Id == SpecializeId).Include(d => d.Doctor)
+				.ThenInclude(a => a.Appointments).ThenInclude(t => t.Time)
+				.SelectMany(s => s.Doctor).SelectMany(a => a.Appointments)
+				.SelectMany(t => t.Time.Where(r => r.RequestId != null)).Count();
+			return requestsNum;
+		}
 	}
 }

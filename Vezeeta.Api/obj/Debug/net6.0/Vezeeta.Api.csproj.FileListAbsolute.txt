@@ -38,7 +38,6 @@ E:\Radwa\visualstudio.net\Projects\Vezeeta\Vezeeta.Api\bin\Debug\net6.0\Swashbuc
 E:\Radwa\visualstudio.net\Projects\Vezeeta\Vezeeta.Api\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 E:\Radwa\visualstudio.net\Projects\Vezeeta\Vezeeta.Api\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 E:\Radwa\visualstudio.net\Projects\Vezeeta\Vezeeta.Api\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
-E:\Radwa\visualstudio.net\Projects\Vezeeta\Vezeeta.Api\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll
 E:\Radwa\visualstudio.net\Projects\Vezeeta\Vezeeta.Api\bin\Debug\net6.0\System.Drawing.Common.dll
 E:\Radwa\visualstudio.net\Projects\Vezeeta\Vezeeta.Api\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
 E:\Radwa\visualstudio.net\Projects\Vezeeta\Vezeeta.Api\bin\Debug\net6.0\System.Linq.Dynamic.Core.dll
@@ -82,4 +81,4 @@ E:\Radwa\visualstudio.net\Projects\Vezeeta\Vezeeta.Api\bin\Debug\net6.0\Microsof
 E:\Radwa\visualstudio.net\Projects\Vezeeta\Vezeeta.Api\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 E:\Radwa\visualstudio.net\Projects\Vezeeta\Vezeeta.Api\bin\Debug\net6.0\Newtonsoft.Json.dll
 E:\Radwa\visualstudio.net\Projects\Vezeeta\Vezeeta.Api\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
-E:\Radwa\visualstudio.net\Projects\Vezeeta\Vezeeta.Api\obj\Debug\net6.0\Vezeeta.Api.MvcApplicationPartsAssemblyInfo.cs
+E:\Radwa\visualstudio.net\Projects\Vezeeta\Vezeeta.Api\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll

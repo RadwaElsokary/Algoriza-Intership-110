@@ -16,11 +16,13 @@ namespace Vezeeta.Api.Controllers
 	{
 		private readonly IAppointmentRepository appointmentRepository;
 		private readonly IRequestRepository requestRepository;
+		private readonly UserManager<ApplicationUser> userManager;
 		
-		public DoctorController(IAppointmentRepository appointmentRepository, IRequestRepository requestRepository)
+		public DoctorController(IAppointmentRepository appointmentRepository, IRequestRepository requestRepository,UserManager<ApplicationUser> userManager)
 		{
 			this.appointmentRepository = appointmentRepository;
 			this.requestRepository = requestRepository;
+			this.userManager = userManager;
 		}
 
 		private Appointment MapAppointmentTime (string DoctorId, AddAppointmentDto addAppointment)
@@ -99,6 +101,32 @@ namespace Vezeeta.Api.Controllers
 			{
 				return StatusCode(400, false);
 			}
+		}
+
+		[HttpGet]
+		[Route("GetAllPatientsBooking")]
+		public async Task<IActionResult> GetAllPatients(string DoctorId,string? SrearchByDate, int Page = 1, int PagesLimit = 10)
+		{
+			var result = await appointmentRepository.GetAllPatientBooking(SrearchByDate, Page, PagesLimit,DoctorId);
+
+			Response.Headers.Add("X-Total-Count",
+				result.TotalCount.ToString());
+			Response.Headers.Add("X-Total-Pages",
+				result.TotalPages.ToString());
+
+			var patients = result.Requests.Where(a=>a.Status == StatusRequest.Pending).Select(booking => new PatientsBookingDto
+			{
+				Image = appointmentRepository.GetPatient(booking.PatientId).PhotoPath,
+				FullName = appointmentRepository.GetPatient(booking.PatientId).FirstName + " " + appointmentRepository.GetPatient(booking.PatientId).LastName,
+				Email = appointmentRepository.GetPatient(booking.PatientId).Email,
+				PhoneNumber = appointmentRepository.GetPatient(booking.PatientId).PhoneNumber,
+				Gender = appointmentRepository.GetPatient(booking.PatientId).Gender.Value.ToString(),
+				Age = appointmentRepository.CalculateAge(appointmentRepository.GetPatient(booking.PatientId).BirthOfDate),
+				Appointment = $"{appointmentRepository.GetPatientDay(booking.TimeId)} { appointmentRepository.GetPatientTime(booking.TimeId)}"
+			});
+
+			return Ok(patients);
+
 		}
 	}
 }

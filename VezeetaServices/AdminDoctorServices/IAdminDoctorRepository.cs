@@ -17,8 +17,10 @@ namespace Vezeeta.Services.DoctorServices
 	    int GetDoctorsNum();
 	    Task<string> GetSpecialization(string id);
 		Specialization AddSpecialization(string SpecializationDoctor);
-		
-
+		List<Doctor> GetTopDoctors();
+		int GetNumRequestsForDoctors(string DoctorId);
+		List<Specialization> GetTopSpecialize();
+		int GetRequestsNumForSpecialize(string SpecializeId);
 
 	}
 }

@@ -114,6 +114,34 @@ namespace Vezeeta.Api.Controllers
 		}
 
 		[HttpGet]
+		[Route("GetTopDoctors")]
+		public IActionResult GetTopDoctors()
+		{
+			var topDoctors = doctorRepository.GetTopDoctors().ToList();
+			var doctors = topDoctors.Select(doctor => new TopDoctorsDto
+			{
+				Image = doctor.PhotoPath,
+				FullName = doctor.FirstName + " " + doctor.LastName,
+				Specialize = doctorRepository.GetSpecialization(doctor.Id).Result,
+				RequestsNum = doctorRepository.GetNumRequestsForDoctors(doctor.Id)
+			});
+			return Ok(doctors);
+		}
+
+		[HttpGet]
+		[Route("GetTopSpecialties")]
+		public IActionResult GetTopSpecialize()
+		{
+			var specializeList = doctorRepository.GetTopSpecialize();
+			var specializes = specializeList.Select(specialize => new TopSpecializeDto
+			{
+				Name = specialize.Name,
+				Requests=doctorRepository.GetRequestsNumForSpecialize(specialize.Id)
+			});
+			return Ok(specializes);
+		}
+
+		[HttpGet]
 		[Route("DoctorsNumbers")]
 		public IActionResult GetDoctorsNum()
 		{

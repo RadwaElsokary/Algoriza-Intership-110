@@ -15,9 +15,16 @@ namespace VezeetaServices.AppointmentServices
 		bool UpdateAppointment(int TimeId, EditTimeDto editTime);
 		bool DeleteAppointment( int TimeId);
 		Time GetTime(int Id);
+		int CalculateAge(DateTime dateOfBirth);
+		string GetPatientTime(int TimeId);
+		string GetPatientDay(int TimeId);
+		List<Request> BookingByDoctorId(string DoctorId);
+		ApplicationUser GetPatient(string PatientId);
+		Task<PageRequest> GetAllPatientBooking(string? term, int? page, int limit, string DoctorId);
 
 
-		
+
+
 
 	}
 }

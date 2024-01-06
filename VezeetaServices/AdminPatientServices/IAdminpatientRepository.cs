@@ -14,11 +14,11 @@ namespace VezeetaServices.PatientServices
 		ApplicationUser GetPatientById(string PatientId);
 		List<Request> PatientRequests(string PatientId);
 		int CalculateAge(DateTime dateOfBirth);
-		Task<Doctor> GetDoctorRequest(string PatientId);
-		Task<string> GetDoctorSpecializationRequest(string PatientId);
-		Task<Appointment> GetDoctorAppointmentRequest(string PatientId);
-	    Task<Time> GetDoctorTimeRequest(string PatientId);
-		Task<string> GetDoctorDiscoundRequest(string PatientId);
+		Task<Doctor> GetDoctorRequest(int RequestId);
+		Task<string> GetDoctorSpecializationRequest(int RequestId);
+		Task<Appointment> GetDoctorAppointmentRequest(int RequestId);
+		Task<string> GetDoctorTimeRequest(int RequestId);
+		Task<string> GetDoctorDiscoundRequest(int RequestId);
 
 
 	}

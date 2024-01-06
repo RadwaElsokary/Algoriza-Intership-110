@@ -32,13 +32,13 @@ namespace VezeetaServices.PatientServices
 			//search by (firstname or lastname)
 			if (string.IsNullOrWhiteSpace(term))
 			{
-				patients = userManger.Users ;
+				patients = context.Users;
 			}
 			else
 			{
 				term = term.Trim().ToLower();
 
-				patients = userManger.Users.Where(d => d.FirstName.ToLower().Contains(term) || d.LastName.ToLower().Contains(term));
+				patients = context.Users.Where(d => d.FirstName.ToLower().Contains(term) || d.LastName.ToLower().Contains(term));
 			}
 
 			//sorting
@@ -87,13 +87,11 @@ namespace VezeetaServices.PatientServices
 			};
 			return pagePatientData;
 		}
-
 		public List<Request> PatientRequests (string PatientId)
 		{
 			var result = context.Requests.Where(a => a.PatientId == PatientId).ToList();
 			return result;
 		}
-
 		public int CalculateAge(DateTime dateOfBirth)
 		{
 			DateTime birth = dateOfBirth;
@@ -115,31 +113,28 @@ namespace VezeetaServices.PatientServices
 			var PatientsCount = Patients.Count();
 			return PatientsCount;
 		}
-
-		public async Task<Doctor> GetDoctorRequest(string PatientId)
+		public async Task<Doctor> GetDoctorRequest(int RequestId)
 		{
-			var request = context.Requests.Include(a => a.Time).FirstOrDefault(a=>a.PatientId == PatientId);
-			var time = context.Times.Include(a => a.Appointment).FirstOrDefault(a => a.RequestId == request.Id);
+			var time = context.Times.Include(a => a.Appointment).FirstOrDefault(a => a.RequestId == RequestId);
 			var appointment = context.Appointments.Include(a => a.Doctor).FirstOrDefault(a => a.Id == time.AppointmentId);
 			var doctor = context.Doctors.FirstOrDefault(a => a.Id == appointment.DoctorId);
 			return doctor;
 		}
-		public async Task<Appointment> GetDoctorAppointmentRequest(string PatientId)
+		public async Task<Appointment> GetDoctorAppointmentRequest(int RequestId)
 		{
-			var request = context.Requests.Include(a => a.Time).FirstOrDefault(a => a.PatientId == PatientId);
-			var time = context.Times.Include(a => a.Appointment).FirstOrDefault(a => a.RequestId == request.Id);
+			var time = context.Times.Include(a => a.Appointment).FirstOrDefault(a => a.RequestId == RequestId);
 			var appointment = context.Appointments.FirstOrDefault(a => a.Id == time.AppointmentId);
 			return appointment;
 		}
-		public async Task<Time> GetDoctorTimeRequest(string PatientId)
+		public async Task<string> GetDoctorTimeRequest(int RequestId)
 		{
-			var request = context.Requests.Include(a => a.Time).FirstOrDefault(a => a.PatientId == PatientId);
-			var time = context.Times.FirstOrDefault(a => a.RequestId == request.Id);
-			return time;
+			var request = context.Requests.Include(a => a.Time).FirstOrDefault(a => a.Id == RequestId);
+			var time = context.Times.FirstOrDefault(a => a.id == request.TimeId);
+			return time.Times;
 		}
-		public async Task<string> GetDoctorDiscoundRequest(string PatientId)
+		public async Task<string> GetDoctorDiscoundRequest(int RequestId)
 		{
-			var request = context.Requests.Include(a => a.Discound).FirstOrDefault(a => a.PatientId == PatientId);
+			var request = context.Requests.Include(a => a.Discound).FirstOrDefault(a => a.Id == RequestId);
 			if (request.DiscoundId == null)
 			{
 				return null;
@@ -150,11 +145,9 @@ namespace VezeetaServices.PatientServices
 				return discound.DiscoundCode;
 			}
 		}
-
-		public  async Task<string> GetDoctorSpecializationRequest(string PatientId)
+		public  async Task<string> GetDoctorSpecializationRequest(int RequestId)
 		{
-			var request = context.Requests.Include(a => a.Time).FirstOrDefault(a => a.PatientId == PatientId);
-			var time = context.Times.Include(a => a.Appointment).FirstOrDefault(a => a.RequestId == request.Id);
+			var time = context.Times.Include(a => a.Appointment).FirstOrDefault(a => a.RequestId == RequestId);
 			var appointment = context.Appointments.Include(a => a.Doctor).FirstOrDefault(a => a.Id == time.AppointmentId);
 			var doctor = context.Doctors.Include(a => a.Specialist).FirstOrDefault(a => a.Id == appointment.DoctorId);
 			var specialist = context.Specializations.FirstOrDefault(a => a.Id == doctor.SpecialistId);

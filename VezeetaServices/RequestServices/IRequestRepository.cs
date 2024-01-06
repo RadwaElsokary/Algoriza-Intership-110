@@ -24,7 +24,11 @@ namespace VezeetaServices.RequestServices
 		int GetCancelRequestNum();
 		int GetCompletedRequestNumToPatient(string PatientId);
 		string GetDoctorId(int RequiestId);
-		
+		List<Appointment> GetDoctorAppointment(string DoctorId);
+		List<Time> GetDoctorTime(int AppointmentId);
+		bool IsTimeCancelled(int TimeId);
+
+
 
 
 	}

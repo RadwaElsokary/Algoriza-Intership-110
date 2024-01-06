@@ -7,7 +7,7 @@ using Vezeeta.Domain.ModelsDto;
 using VezeetaServices.PatientServices;
 using VezeetaServices.RequestServices;
 
-namespace Vezeeta.Api.Controllers
+namespace Vezeeta.Api.Controller
 {
 	[Route("api/[controller]")]
 	[ApiController]
@@ -41,10 +41,8 @@ namespace Vezeeta.Api.Controllers
 			Response.Headers.Add("X-Total-Pages",
 				result.TotalPages.ToString());
 
-
-			var PatientList = result.Patients;
-			PatientList = await userManager.GetUsersInRoleAsync("Patient");
-			var patients = PatientList.Select(patient => new PatientDto
+			
+			var patients = result.Patients.Where(p=> userManager.IsInRoleAsync(p,"Patient").Result).Select(patient => new PatientDto
 			{
 				Image = patient.PhotoPath,
 				FullName = patient.FirstName + " " + patient.LastName,
@@ -62,17 +60,10 @@ namespace Vezeeta.Api.Controllers
 		[Route("GetDPatientById")]
 		public async Task<IActionResult> GetPatientById(string PatientId)
 		{
+			 
 			var patient = patientRepository.GetPatientById(PatientId);
 			var request = patientRepository.PatientRequests(PatientId).ToList();
-			var doctor = patientRepository.GetDoctorRequest(PatientId).Result;
-			var DoctorSpecialization = patientRepository.GetDoctorSpecializationRequest(PatientId).Result;
-			var DoctorAppointment = patientRepository.GetDoctorAppointmentRequest(PatientId).Result;
-			var DoctorTime = patientRepository.GetDoctorTimeRequest(PatientId).Result;
-			var DoctorDiscound = patientRepository.GetDoctorDiscoundRequest(PatientId).Result;
-			if (DoctorDiscound == null)
-			{
-
-			}
+		
 			var PatientDto = new
 			{
 				Patient = new
@@ -87,22 +78,21 @@ namespace Vezeeta.Api.Controllers
 				},
 				requesPatient = request.Select(requestData => new
 				{
-					DoctorImage = doctor.PhotoPath,
-					DoctorName = doctor.FirstName + " " + doctor.LastName,
-					DoctorSpecialization = DoctorSpecialization,
-					AppointmentDay = DoctorAppointment.Day.GetDisplayName(),
-					AppointmentTime = DoctorTime.Times,
-					OldPrice = DoctorAppointment.Price,
+					DoctorImage = patientRepository.GetDoctorRequest(requestData.Id).Result.PhotoPath,
+					DoctorName = patientRepository.GetDoctorRequest(requestData.Id).Result.FirstName + " " + patientRepository.GetDoctorRequest(requestData.Id).Result.LastName,
+					DoctorSpecialization = patientRepository.GetDoctorSpecializationRequest(requestData.Id).Result,
+					AppointmentDay = patientRepository.GetDoctorAppointmentRequest(requestData.Id).Result.Day.GetDisplayName(),
+					AppointmentTime = patientRepository.GetDoctorTimeRequest(requestData.Id).Result ,
+					OldPrice = patientRepository.GetDoctorAppointmentRequest(requestData.Id).Result.Price,
 					FinalPrice = requestData.FinalPrice,
 					StatusRequest = requestData.Status.GetDisplayName(),
-					DiscoundCoupon = DoctorDiscound
+					DiscoundCoupon = patientRepository.GetDoctorDiscoundRequest(requestData.Id).Result
 				}).ToList(),
 				
 			};
 
 			return Ok(PatientDto);
 		}
-
 
 		[HttpGet]
 		[Route("PatientsNumber")]
